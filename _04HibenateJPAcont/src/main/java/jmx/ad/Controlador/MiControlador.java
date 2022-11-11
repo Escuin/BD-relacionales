@@ -1,5 +1,7 @@
 package jmx.ad.Controlador;
 
+import jmx.ad.modelo.Account;
+import jmx.ad.modelo.Bank;
 import jmx.ad.modelo.Empleado;
 import lombok.NoArgsConstructor;
 
@@ -90,6 +92,29 @@ public class MiControlador {
     public void cierra (){
         entityManager.close();
         entityManagerFactory.close();
+    }
+
+    public void saveBank (Bank banco){
+        try {
+            transaction.begin();
+            entityManager.persist(banco);
+            transaction.commit();
+        }finally {
+            if (transaction.isActive()){
+                transaction.rollback();
+            }
+        }
+
+    }
+
+    public Bank buscaBanco(long l) {
+        return entityManager.find(Bank.class, l);
+    }
+
+    public Account buscaCuenta (Long id){
+
+        return entityManager.find(Account.class, id);
+
     }
 
 }
