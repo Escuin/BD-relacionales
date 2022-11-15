@@ -2,6 +2,8 @@ package jmx.ad;
 
 import jmx.ad.Controlador.MiControlador;
 import jmx.ad.dao.ContactDao;
+import jmx.ad.dao.PersonaDao;
+import jmx.ad.dao.TrabajoDao;
 import jmx.ad.modelo.*;
 
 
@@ -9,6 +11,7 @@ import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class Main {
@@ -96,6 +99,7 @@ public class Main {
        // miControlador.cierra();
 
         //Trabajando con DAO
+/*
 
         ContactDao contactDao = new ContactDao();
         URL url = null;
@@ -109,6 +113,27 @@ public class Main {
 
 
         contactDao.cierra();
+*/
+
+        //Ejemplo OneToOne Persona trabajo con DAO
+
+        PersonaDao personaDao = new PersonaDao();
+        TrabajoDao trabajoDao = new TrabajoDao();
+
+        /*Persona p1 = Persona.builder().dni("18444555A").nombre("Pepito").apellido("Lopez").build();
+        Trabajo t1 = Trabajo.builder().nombre("Soldador").turno("Noches").fin(LocalTime.of(6,00)).inicio(LocalTime.of(22,0)).build();
+        personaDao.insert(p1);
+        trabajoDao.insert(t1);
+
+        p1.setTrabajo(t1);
+        t1.setPersona(p1);
+        personaDao.insert(p1);
+        trabajoDao.insert(t1);*/
+
+
+        Persona persona = personaDao.busca("18444555A");
+        System.out.println(persona);
+
 
 
 
