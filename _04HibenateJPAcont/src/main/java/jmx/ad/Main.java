@@ -1,19 +1,20 @@
 package jmx.ad;
 
 import jmx.ad.Controlador.MiControlador;
-import jmx.ad.modelo.Account;
-import jmx.ad.modelo.Bank;
-import jmx.ad.modelo.Empleado;
+import jmx.ad.dao.ContactDao;
+import jmx.ad.modelo.*;
 
 
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        MiControlador miControlador = new MiControlador();
+        //MiControlador miControlador = new MiControlador();
         //insert
         //Empleado e1 = Empleado.builder().nombre("Pedro").apellidos("Perez").dni("00000000S").build();
         //miControlador.insert(e1);
@@ -85,13 +86,29 @@ public class Main {
 
         //Busco una cuenta y devuelve el banco al que pertenece!
 
-        Account cuenta = miControlador.buscaCuenta(1L);
-        System.out.println(cuenta);
-
-        miControlador.cierra();
+       // Account cuenta = miControlador.buscaCuenta(1L);
+        //System.out.println(cuenta);
 
 
 
+
+
+       // miControlador.cierra();
+
+        //Trabajando con DAO
+
+        ContactDao contactDao = new ContactDao();
+        URL url = null;
+        try {
+            url = new URL("http://www.as.com");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        Name nombre = Name.builder().firstName("Juan").lastName("Moreno").middleName("Manuel").build();
+        contactDao.insert(Contact.builder().website(url).id(1).name(nombre).build());
+
+
+        contactDao.cierra();
 
 
 
