@@ -13,14 +13,15 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Mecanico {
+public class Owner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    String nombre;
-    String puesto;
-    Double salario;
-
-
+    String name;
+    String surname;
+    String mail;
+    @OneToMany
+    @JoinColumn(name = "owner_id")
+    List<Pet> ownerList;
 }

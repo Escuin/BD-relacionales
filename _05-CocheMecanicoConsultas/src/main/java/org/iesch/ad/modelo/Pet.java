@@ -6,22 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Coche {
+public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    String marca;
-    String modelo;
-    String color;
-    @OneToMany
-    @JoinColumn(name = "coche_id")
-    List<Mecanico> mecanicoList;
+    String name;
+    String breed;
+    String type;
+    boolean hasChip;
+    Double weight;
+
+
 }
