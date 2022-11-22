@@ -21,6 +21,21 @@ public class Pet {
     String type;
     boolean hasChip;
     Double weight;
+    @ManyToOne
+    private Owner owner;
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", breed='" + breed + '\'' +
+                ", type='" + type + '\'' +
+                ", hasChip=" + hasChip +
+                ", weight=" + weight +
+                ", owner=" + owner.getName() +" " + owner.getSurname() +
+                '}' + "\n";
+    }
 
 
 }

@@ -20,6 +20,7 @@ public class Owner {
     int id;
     String name;
     String surname;
+    @Column(name = "email")
     String mail;
     @OneToMany
     @JoinColumn(name = "owner_id")
